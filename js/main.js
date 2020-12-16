@@ -26,14 +26,17 @@ const students = [{
 
 
 // 1
-function getSubjects(students) {
-   let resultSubject = Object.keys(students.subjects);
-   resultSubject = resultSubject.map((letter) => {
-      letter = letter[0].toUpperCase() + letter.slice(1).toLowerCase();
-      return letter.replaceAll(('_'), (' '));
-   });
-   return resultSubject;
-};
+const getSubjects = (student) => Object.keys(student.subjects).map((el) => (el[0].toUpperCase() + el.slice(1)).replace("_", " ") );
+
+// function getSubjects(students) {
+//    let resultSubject = Object.keys(students.subjects);
+//    resultSubject = resultSubject.map((letter) => {
+//       letter = letter[0].toUpperCase() + letter.slice(1).toLowerCase();
+//       return letter.replaceAll(('_'), (' '));
+//    });
+//    return resultSubject;
+// };
+
 console.log(getSubjects(students[0]))
 
 
@@ -41,12 +44,11 @@ console.log(getSubjects(students[0]))
 function getAverageMark(student) {
    let marksTotal = 0;
    let marksCount = 0;
-   Object.entries(student.subjects).map(([subject, marks]) => {
-      marks.forEach((mark, index) => {
+   Object.entries(student.subjects).map(([subject, marks]) => marks.forEach((mark, index) => {
          marksTotal += mark;
          marksCount++;
       })
-   });
+   );
    return (marksTotal / marksCount).toFixed(2);
 }
 console.log(getAverageMark(students[2]));
@@ -70,12 +72,12 @@ console.log(getStudentInfo(students[2]));
 function getStudentsNames(student) {
    let result = []
    student.sort(function (a, b) {
-      let nameA = a.name.toLowerCase();
-      let nameB = b.name.toLowerCase();
-      if (nameA < nameB) {
+      let firstStudentName = a.name.toLowerCase();
+      let secondStudentName = b.name.toLowerCase();
+      if (firstStudentName < secondStudentName) {
          return -1;
       }
-      if (nameA > nameB) {
+      if (firstStudentName > secondStudentName) {
          return 1
       }
       return 0
