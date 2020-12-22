@@ -111,8 +111,8 @@ console.log(getBestStudent(students));
 // 6
 function calculateWordLetters(word) {
    let result = {};
-   wordArr = word.split('');
-   wordArr.forEach((letter, index) => {
+   // wordArr = word.split('');
+   word.split('').forEach((letter, index) => {
       if (result[letter]) {
          result[letter]++;
       } else {
